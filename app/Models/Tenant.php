@@ -10,12 +10,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
+use Stancl\Tenancy\Contracts\TenantWithDatabase;
+use Stancl\Tenancy\Database\Concerns\HasDatabase;
+use Stancl\Tenancy\Database\Concerns\HasDomains;
 
-class Tenant extends Model implements HasMedia
+class Tenant extends BaseTenant implements HasMedia ,TenantWithDatabase
 {
     use SoftDeletes;
     use InteractsWithMedia;
     use HasFactory;
+    use HasDomains;
+    use HasDatabase;
 
     public $table = 'tenants';
 
@@ -43,6 +49,23 @@ class Tenant extends Model implements HasMedia
         'updated_at',
         'deleted_at',
     ];
+
+    public static function getCustomColumns(): array
+{
+    return [
+        'id',
+        'store_logo',
+        'store_name',
+        'phone_number',
+        'email',
+        'is_active',
+        'valid_until',
+        'store_location',
+        'package_id',
+        'created_by_id',
+        'deleted_at',
+    ];
+}
 
     public function registerMediaConversions(Media $media = null): void
     {

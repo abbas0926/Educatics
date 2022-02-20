@@ -18,6 +18,7 @@ class CreateTenantsTable extends Migration
             $table->longText('store_location')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->json('data')->nullable();
         });
     }
 }

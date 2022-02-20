@@ -6,8 +6,9 @@ use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Stancl\Tenancy\Database\Models\Domain as BaseDomain;
 
-class Domain extends Model
+class Domain extends BaseDomain
 {
     use SoftDeletes;
     use HasFactory;

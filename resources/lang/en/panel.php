@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'izicart Admin Panel',
+    'site_title' => 'Educatics Admin Panel',
 ];
