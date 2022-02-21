@@ -52,7 +52,10 @@ class User extends Authenticatable
     {
         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
     }
-
+    public function userUserAlerts()
+    {
+        return $this->belongsToMany(UserAlert::class);
+    }
     public function setEmailVerifiedAtAttribute($value)
     {
         $this->attributes['email_verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
@@ -79,4 +82,21 @@ class User extends Authenticatable
     {
         return $date->format('Y-m-d H:i:s');
     }
+    public function getAttachementsAttribute()
+    {
+        return $this->getMedia('attachements');
+    }
+    public function getPhotoAttribute()
+    {
+        $file = $this->getMedia('photo')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
+    }
+
+
 }

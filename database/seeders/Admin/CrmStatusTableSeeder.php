@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Admin;
 
 use App\Models\CrmStatus;
 use Illuminate\Database\Seeder;

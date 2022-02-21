@@ -21,31 +21,33 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
 Route::redirect('/', '/login');
 
+Route::group(['middleware'=>['universal','web',InitializeTenancyByDomainOrSubdomain::class]] , function (){
+    Auth::routes(['register'=>false]);
+});
 
 
-
+ 
 Route::group([ 'middleware' => ['web' ,
         PreventAccessFromCentralDomains::class ,
         InitializeTenancyByDomainOrSubdomain::class  ]
     ], function () {
       
         Route::get('/home', function () {
+            
             if (session('status')) {
+                dd("hey");
                 return redirect()->route('tenant.home')->with('status', session('status'));
             }
         
             return redirect()->route('tenant.home');
         });
-    }
-);
-
-Route::group(['prefix' => 'admin', 'as' => 'tenant.', 'namespace' => 'App\Http\Controllers\Tenant', 'middleware' => ['auth' ,
+        Route::group(['prefix' => 'admin', 'as' => 'tenant.', 'namespace' => 'App\Http\Controllers\Tenant', 'middleware' => ['auth' ,
         PreventAccessFromCentralDomains::class ,
         InitializeTenancyByDomainOrSubdomain::class  ]
     ], function () {
     
-
     Route::get('/', 'HomeController@index')->name('home');
+    
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -219,4 +221,8 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
+    }
+);
+
+
 

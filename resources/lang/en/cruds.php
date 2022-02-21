@@ -65,6 +65,25 @@ return [
             'deleted_at_helper'        => ' ',
         ],
     ],
+    'userAlert' => [
+        'title'          => 'User Alerts',
+        'title_singular' => 'User Alert',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'alert_text'        => 'Alert Text',
+            'alert_text_helper' => ' ',
+            'alert_link'        => 'Alert Link',
+            'alert_link_helper' => ' ',
+            'user'              => 'Users',
+            'user_helper'       => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+        ],
+    ],
+
     'basicCRM' => [
         'title'          => 'Basic CRM',
         'title_singular' => 'Basic CRM',

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Admin;
 
 use App\Models\TaskStatus;
 use Illuminate\Database\Seeder;
