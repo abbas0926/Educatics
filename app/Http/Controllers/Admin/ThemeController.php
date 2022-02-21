@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\MassDestroyThemeRequest;
-use App\Http\Requests\StoreThemeRequest;
-use App\Http\Requests\UpdateThemeRequest;
+use App\Http\Requests\Admin\MassDestroyThemeRequest;
+use App\Http\Requests\Admin\StoreThemeRequest;
+use App\Http\Requests\Admin\UpdateThemeRequest;
 use App\Models\Tenant;
 use App\Models\Theme;
 use Gate;
@@ -36,7 +36,7 @@ class ThemeController extends Controller
                 $deleteGate = 'theme_delete';
                 $crudRoutePart = 'themes';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

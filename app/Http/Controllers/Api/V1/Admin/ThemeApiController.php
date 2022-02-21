@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\StoreThemeRequest;
-use App\Http\Requests\UpdateThemeRequest;
+use App\Http\Requests\Admin\StoreThemeRequest;
+use App\Http\Requests\Admin\UpdateThemeRequest;
 use App\Http\Resources\Admin\ThemeResource;
 use App\Models\Theme;
 use Gate;

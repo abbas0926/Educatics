@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCrmNoteRequest;
-use App\Http\Requests\UpdateCrmNoteRequest;
+use App\Http\Requests\Admin\StoreCrmNoteRequest;
+use App\Http\Requests\Admin\UpdateCrmNoteRequest;
 use App\Http\Resources\Admin\CrmNoteResource;
 use App\Models\CrmNote;
 use Gate;

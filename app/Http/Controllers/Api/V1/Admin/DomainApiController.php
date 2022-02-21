@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreDomainRequest;
-use App\Http\Requests\UpdateDomainRequest;
+use App\Http\Requests\Admin\StoreDomainRequest;
+use App\Http\Requests\Admin\UpdateDomainRequest;
 use App\Http\Resources\Admin\DomainResource;
 use App\Models\Domain;
 use Gate;

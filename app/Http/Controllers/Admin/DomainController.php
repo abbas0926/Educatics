@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyDomainRequest;
-use App\Http\Requests\StoreDomainRequest;
-use App\Http\Requests\UpdateDomainRequest;
+use App\Http\Requests\Admin\MassDestroyDomainRequest;
+use App\Http\Requests\Admin\StoreDomainRequest;
+use App\Http\Requests\Admin\UpdateDomainRequest;
 use App\Models\Domain;
 use App\Models\Tenant;
 use App\Models\User;
@@ -33,7 +33,7 @@ class DomainController extends Controller
                 $deleteGate = 'domain_delete';
                 $crudRoutePart = 'domains';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

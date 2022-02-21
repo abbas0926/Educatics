@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\StoreCrmDocumentRequest;
-use App\Http\Requests\UpdateCrmDocumentRequest;
+use App\Http\Requests\Admin\StoreCrmDocumentRequest;
+use App\Http\Requests\Admin\UpdateCrmDocumentRequest;
 use App\Http\Resources\Admin\CrmDocumentResource;
 use App\Models\CrmDocument;
 use Gate;

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\MassDestroyPackageRequest;
-use App\Http\Requests\StorePackageRequest;
-use App\Http\Requests\UpdatePackageRequest;
+use App\Http\Requests\Admin\MassDestroyPackageRequest;
+use App\Http\Requests\Admin\StorePackageRequest;
+use App\Http\Requests\Admin\UpdatePackageRequest;
 use App\Models\Feature;
 use App\Models\Package;
 use Gate;
@@ -36,7 +36,7 @@ class PackageController extends Controller
                 $deleteGate = 'package_delete';
                 $crudRoutePart = 'packages';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

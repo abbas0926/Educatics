@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyCrmNoteRequest;
-use App\Http\Requests\StoreCrmNoteRequest;
-use App\Http\Requests\UpdateCrmNoteRequest;
+use App\Http\Requests\Admin\MassDestroyCrmNoteRequest;
+use App\Http\Requests\Admin\StoreCrmNoteRequest;
+use App\Http\Requests\Admin\UpdateCrmNoteRequest;
 use App\Models\CrmCustomer;
 use App\Models\CrmNote;
 use Gate;
@@ -32,7 +32,7 @@ class CrmNoteController extends Controller
                 $deleteGate = 'crm_note_delete';
                 $crudRoutePart = 'crm-notes';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

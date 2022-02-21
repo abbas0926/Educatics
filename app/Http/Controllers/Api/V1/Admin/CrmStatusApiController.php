@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCrmStatusRequest;
-use App\Http\Requests\UpdateCrmStatusRequest;
+use App\Http\Requests\Admin\StoreCrmStatusRequest;
+use App\Http\Requests\Admin\UpdateCrmStatusRequest;
 use App\Http\Resources\Admin\CrmStatusResource;
 use App\Models\CrmStatus;
 use Gate;

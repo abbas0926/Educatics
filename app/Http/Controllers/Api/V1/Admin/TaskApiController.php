@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
+use App\Http\Requests\Admin\StoreTaskRequest;
+use App\Http\Requests\Admin\UpdateTaskRequest;
 use App\Http\Resources\Admin\TaskResource;
 use App\Models\Task;
 use Gate;

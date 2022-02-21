@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreFeatureRequest;
-use App\Http\Requests\UpdateFeatureRequest;
+use App\Http\Requests\Admin\StoreFeatureRequest;
+use App\Http\Requests\Admin\UpdateFeatureRequest;
 use App\Http\Resources\Admin\FeatureResource;
 use App\Models\Feature;
 use Gate;

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTaskTagRequest;
-use App\Http\Requests\UpdateTaskTagRequest;
+use App\Http\Requests\Admin\StoreTaskTagRequest;
+use App\Http\Requests\Admin\UpdateTaskTagRequest;
 use App\Http\Resources\Admin\TaskTagResource;
 use App\Models\TaskTag;
 use Gate;

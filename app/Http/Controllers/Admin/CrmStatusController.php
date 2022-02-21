@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyCrmStatusRequest;
-use App\Http\Requests\StoreCrmStatusRequest;
-use App\Http\Requests\UpdateCrmStatusRequest;
+use App\Http\Requests\Admin\MassDestroyCrmStatusRequest;
+use App\Http\Requests\Admin\StoreCrmStatusRequest;
+use App\Http\Requests\Admin\UpdateCrmStatusRequest;
 use App\Models\CrmStatus;
 use Gate;
 use Illuminate\Http\Request;
@@ -31,7 +31,7 @@ class CrmStatusController extends Controller
                 $deleteGate = 'crm_status_delete';
                 $crudRoutePart = 'crm-statuses';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyCrmCustomerRequest;
-use App\Http\Requests\StoreCrmCustomerRequest;
-use App\Http\Requests\UpdateCrmCustomerRequest;
+use App\Http\Requests\Admin\MassDestroyCrmCustomerRequest;
+use App\Http\Requests\Admin\StoreCrmCustomerRequest;
+use App\Http\Requests\Admin\UpdateCrmCustomerRequest;
 use App\Models\CrmCustomer;
 use App\Models\CrmStatus;
 use Gate;
@@ -32,7 +32,7 @@ class CrmCustomerController extends Controller
                 $deleteGate = 'crm_customer_delete';
                 $crudRoutePart = 'crm-customers';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

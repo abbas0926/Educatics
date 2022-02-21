@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\MassDestroyTaskRequest;
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
+use App\Http\Requests\Admin\MassDestroyTaskRequest;
+use App\Http\Requests\Admin\StoreTaskRequest;
+use App\Http\Requests\Admin\UpdateTaskRequest;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\TaskTag;
@@ -38,7 +38,7 @@ class TaskController extends Controller
                 $deleteGate = 'task_delete';
                 $crudRoutePart = 'tasks';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

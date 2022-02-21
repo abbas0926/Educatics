@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyFeatureRequest;
-use App\Http\Requests\StoreFeatureRequest;
-use App\Http\Requests\UpdateFeatureRequest;
+use App\Http\Requests\Admin\MassDestroyFeatureRequest;
+use App\Http\Requests\Admin\StoreFeatureRequest;
+use App\Http\Requests\Admin\UpdateFeatureRequest;
 use App\Models\Feature;
 use Gate;
 use Illuminate\Http\Request;

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\MassDestroyTenantRequest;
-use App\Http\Requests\StoreTenantRequest;
-use App\Http\Requests\UpdateTenantRequest;
+use App\Http\Requests\Admin\MassDestroyTenantRequest;
+use App\Http\Requests\Admin\StoreTenantRequest;
+use App\Http\Requests\Admin\UpdateTenantRequest;
 use App\Models\Package;
 use App\Models\Tenant;
 use App\Models\User;
@@ -37,7 +37,7 @@ class TenantController extends Controller
                 $deleteGate = 'tenant_delete';
                 $crudRoutePart = 'tenants';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

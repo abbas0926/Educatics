@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\StoreTenantRequest;
-use App\Http\Requests\UpdateTenantRequest;
+use App\Http\Requests\Admin\StoreTenantRequest;
+use App\Http\Requests\Admin\UpdateTenantRequest;
 use App\Http\Resources\Admin\TenantResource;
 use App\Models\Tenant;
 use Gate;

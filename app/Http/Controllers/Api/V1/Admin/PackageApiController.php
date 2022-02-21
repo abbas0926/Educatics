@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\StorePackageRequest;
-use App\Http\Requests\UpdatePackageRequest;
+use App\Http\Requests\Admin\StorePackageRequest;
+use App\Http\Requests\Admin\UpdatePackageRequest;
 use App\Http\Resources\Admin\PackageResource;
 use App\Models\Package;
 use Gate;

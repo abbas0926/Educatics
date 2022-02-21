@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\MassDestroyCrmDocumentRequest;
-use App\Http\Requests\StoreCrmDocumentRequest;
-use App\Http\Requests\UpdateCrmDocumentRequest;
+use App\Http\Requests\Admin\MassDestroyCrmDocumentRequest;
+use App\Http\Requests\Admin\StoreCrmDocumentRequest;
+use App\Http\Requests\Admin\UpdateCrmDocumentRequest;
 use App\Models\CrmCustomer;
 use App\Models\CrmDocument;
 use Gate;
@@ -36,7 +36,7 @@ class CrmDocumentController extends Controller
                 $deleteGate = 'crm_document_delete';
                 $crudRoutePart = 'crm-documents';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

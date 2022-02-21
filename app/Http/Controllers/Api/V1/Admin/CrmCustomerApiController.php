@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCrmCustomerRequest;
-use App\Http\Requests\UpdateCrmCustomerRequest;
+use App\Http\Requests\Admin\StoreCrmCustomerRequest;
+use App\Http\Requests\Admin\UpdateCrmCustomerRequest;
 use App\Http\Resources\Admin\CrmCustomerResource;
 use App\Models\CrmCustomer;
 use Gate;

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroySettingRequest;
-use App\Http\Requests\StoreSettingRequest;
-use App\Http\Requests\UpdateSettingRequest;
+use App\Http\Requests\Admin\MassDestroySettingRequest;
+use App\Http\Requests\Admin\StoreSettingRequest;
+use App\Http\Requests\Admin\UpdateSettingRequest;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;

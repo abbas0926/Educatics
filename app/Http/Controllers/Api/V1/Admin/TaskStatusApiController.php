@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTaskStatusRequest;
-use App\Http\Requests\UpdateTaskStatusRequest;
+use App\Http\Requests\Admin\StoreTaskStatusRequest;
+use App\Http\Requests\Admin\UpdateTaskStatusRequest;
 use App\Http\Resources\Admin\TaskStatusResource;
 use App\Models\TaskStatus;
 use Gate;

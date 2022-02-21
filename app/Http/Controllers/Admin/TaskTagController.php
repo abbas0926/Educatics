@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyTaskTagRequest;
-use App\Http\Requests\StoreTaskTagRequest;
-use App\Http\Requests\UpdateTaskTagRequest;
+use App\Http\Requests\Admin\MassDestroyTaskTagRequest;
+use App\Http\Requests\Admin\StoreTaskTagRequest;
+use App\Http\Requests\Admin\UpdateTaskTagRequest;
 use App\Models\TaskTag;
 use Gate;
 use Illuminate\Http\Request;
@@ -31,7 +31,7 @@ class TaskTagController extends Controller
                 $deleteGate = 'task_tag_delete';
                 $crudRoutePart = 'task-tags';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

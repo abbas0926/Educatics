@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyTaskStatusRequest;
-use App\Http\Requests\StoreTaskStatusRequest;
-use App\Http\Requests\UpdateTaskStatusRequest;
+use App\Http\Requests\Admin\MassDestroyTaskStatusRequest;
+use App\Http\Requests\Admin\StoreTaskStatusRequest;
+use App\Http\Requests\Admin\UpdateTaskStatusRequest;
 use App\Models\TaskStatus;
 use Gate;
 use Illuminate\Http\Request;
@@ -31,7 +31,7 @@ class TaskStatusController extends Controller
                 $deleteGate = 'task_status_delete';
                 $crudRoutePart = 'task-statuses';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyPaymentRequest;
-use App\Http\Requests\StorePaymentRequest;
-use App\Http\Requests\UpdatePaymentRequest;
+use App\Http\Requests\Admin\MassDestroyPaymentRequest;
+use App\Http\Requests\Admin\StorePaymentRequest;
+use App\Http\Requests\Admin\UpdatePaymentRequest;
 use App\Models\Package;
 use App\Models\Payment;
 use App\Models\Tenant;
@@ -34,7 +34,7 @@ class PaymentController extends Controller
                 $deleteGate = 'payment_delete';
                 $crudRoutePart = 'payments';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.admin.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
