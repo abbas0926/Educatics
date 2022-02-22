@@ -32,7 +32,7 @@ class SalaryController extends Controller
                 $deleteGate = 'salary_delete';
                 $crudRoutePart = 'salaries';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -79,7 +79,7 @@ class SalaryController extends Controller
     {
         $salary = Salary::create($request->all());
 
-        return redirect()->route('admin.salaries.index');
+        return redirect()->route('tenant.salaries.index');
     }
 
     public function edit(Salary $salary)
@@ -97,7 +97,7 @@ class SalaryController extends Controller
     {
         $salary->update($request->all());
 
-        return redirect()->route('admin.salaries.index');
+        return redirect()->route('tenant.salaries.index');
     }
 
     public function show(Salary $salary)

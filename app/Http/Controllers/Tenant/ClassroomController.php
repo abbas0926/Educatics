@@ -35,7 +35,7 @@ class ClassroomController extends Controller
                 $deleteGate = 'classroom_delete';
                 $crudRoutePart = 'classrooms';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -77,7 +77,7 @@ class ClassroomController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $classroom->id]);
         }
 
-        return redirect()->route('admin.classrooms.index');
+        return redirect()->route('tenant.classrooms.index');
     }
 
     public function edit(Classroom $classroom)
@@ -91,7 +91,7 @@ class ClassroomController extends Controller
     {
         $classroom->update($request->all());
 
-        return redirect()->route('admin.classrooms.index');
+        return redirect()->route('tenant.classrooms.index');
     }
 
     public function show(Classroom $classroom)

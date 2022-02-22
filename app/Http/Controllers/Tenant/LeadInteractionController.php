@@ -37,7 +37,7 @@ class LeadInteractionController extends Controller
                 $deleteGate = 'lead_interaction_delete';
                 $crudRoutePart = 'lead-interactions';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -77,7 +77,7 @@ class LeadInteractionController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $leadInteraction->id]);
         }
 
-        return redirect()->route('admin.lead-interactions.index');
+        return redirect()->route('tenant.lead-interactions.index');
     }
 
     public function edit(LeadInteraction $leadInteraction)
@@ -97,7 +97,7 @@ class LeadInteractionController extends Controller
     {
         $leadInteraction->update($request->all());
 
-        return redirect()->route('admin.lead-interactions.index');
+        return redirect()->route('tenant.lead-interactions.index');
     }
 
     public function show(LeadInteraction $leadInteraction)

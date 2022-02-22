@@ -32,7 +32,7 @@ class EmployeePresenceController extends Controller
                 $deleteGate = 'employee_presence_delete';
                 $crudRoutePart = 'employee-presences';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -76,7 +76,7 @@ class EmployeePresenceController extends Controller
     {
         $employeePresence = EmployeePresence::create($request->all());
 
-        return redirect()->route('admin.employee-presences.index');
+        return redirect()->route('tenant.employee-presences.index');
     }
 
     public function edit(EmployeePresence $employeePresence)
@@ -94,7 +94,7 @@ class EmployeePresenceController extends Controller
     {
         $employeePresence->update($request->all());
 
-        return redirect()->route('admin.employee-presences.index');
+        return redirect()->route('tenant.employee-presences.index');
     }
 
     public function show(EmployeePresence $employeePresence)

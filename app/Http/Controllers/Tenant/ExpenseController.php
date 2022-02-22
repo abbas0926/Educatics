@@ -36,7 +36,7 @@ class ExpenseController extends Controller
     {
         $expense = Expense::create($request->all());
 
-        return redirect()->route('admin.expenses.index');
+        return redirect()->route('tenant.expenses.index');
     }
 
     public function edit(Expense $expense)
@@ -54,7 +54,7 @@ class ExpenseController extends Controller
     {
         $expense->update($request->all());
 
-        return redirect()->route('admin.expenses.index');
+        return redirect()->route('tenant.expenses.index');
     }
 
     public function show(Expense $expense)

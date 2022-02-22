@@ -35,7 +35,7 @@ class EmployeeController extends Controller
                 $deleteGate = 'employee_delete';
                 $crudRoutePart = 'employees';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -100,7 +100,7 @@ class EmployeeController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $employee->id]);
         }
 
-        return redirect()->route('admin.employees.index');
+        return redirect()->route('tenant.employees.index');
     }
 
     public function edit(Employee $employee)
@@ -139,7 +139,7 @@ class EmployeeController extends Controller
             }
         }
 
-        return redirect()->route('admin.employees.index');
+        return redirect()->route('tenant.employees.index');
     }
 
     public function show(Employee $employee)

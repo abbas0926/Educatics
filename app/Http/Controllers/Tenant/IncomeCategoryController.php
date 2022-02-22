@@ -33,7 +33,7 @@ class IncomeCategoryController extends Controller
     {
         $incomeCategory = IncomeCategory::create($request->all());
 
-        return redirect()->route('admin.income-categories.index');
+        return redirect()->route('tenant.income-categories.index');
     }
 
     public function edit(IncomeCategory $incomeCategory)
@@ -47,7 +47,7 @@ class IncomeCategoryController extends Controller
     {
         $incomeCategory->update($request->all());
 
-        return redirect()->route('admin.income-categories.index');
+        return redirect()->route('tenant.income-categories.index');
     }
 
     public function show(IncomeCategory $incomeCategory)

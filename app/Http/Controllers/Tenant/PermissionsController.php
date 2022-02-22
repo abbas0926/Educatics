@@ -33,7 +33,7 @@ class PermissionsController extends Controller
     {
         $permission = Permission::create($request->all());
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('tenant.permissions.index');
     }
 
     public function edit(Permission $permission)
@@ -47,7 +47,7 @@ class PermissionsController extends Controller
     {
         $permission->update($request->all());
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('tenant.permissions.index');
     }
 
     public function show(Permission $permission)

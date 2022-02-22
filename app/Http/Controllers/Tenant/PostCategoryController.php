@@ -33,7 +33,7 @@ class PostCategoryController extends Controller
     {
         $postCategory = PostCategory::create($request->all());
 
-        return redirect()->route('admin.post-categories.index');
+        return redirect()->route('tenant.post-categories.index');
     }
 
     public function edit(PostCategory $postCategory)
@@ -47,7 +47,7 @@ class PostCategoryController extends Controller
     {
         $postCategory->update($request->all());
 
-        return redirect()->route('admin.post-categories.index');
+        return redirect()->route('tenant.post-categories.index');
     }
 
     public function show(PostCategory $postCategory)

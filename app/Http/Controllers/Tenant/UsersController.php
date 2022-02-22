@@ -52,7 +52,7 @@ class UsersController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $user->id]);
         }
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('tenant.users.index');
     }
 
     public function edit(User $user)
@@ -95,7 +95,7 @@ class UsersController extends Controller
             }
         }
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('tenant.users.index');
     }
 
     public function show(User $user)

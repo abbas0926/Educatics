@@ -33,7 +33,7 @@ class TestimonialController extends Controller
     {
         $testimonial = Testimonial::create($request->all());
 
-        return redirect()->route('admin.testimonials.index');
+        return redirect()->route('tenant.testimonials.index');
     }
 
     public function edit(Testimonial $testimonial)
@@ -47,7 +47,7 @@ class TestimonialController extends Controller
     {
         $testimonial->update($request->all());
 
-        return redirect()->route('admin.testimonials.index');
+        return redirect()->route('tenant.testimonials.index');
     }
 
     public function show(Testimonial $testimonial)

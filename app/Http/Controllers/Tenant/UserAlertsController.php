@@ -31,7 +31,7 @@ class UserAlertsController extends Controller
                 $deleteGate = 'user_alert_delete';
                 $crudRoutePart = 'user-alerts';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -80,7 +80,7 @@ class UserAlertsController extends Controller
         $userAlert = UserAlert::create($request->all());
         $userAlert->users()->sync($request->input('users', []));
 
-        return redirect()->route('admin.user-alerts.index');
+        return redirect()->route('tenant.user-alerts.index');
     }
 
     public function show(UserAlert $userAlert)

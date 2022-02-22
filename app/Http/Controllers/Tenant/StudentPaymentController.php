@@ -37,7 +37,7 @@ class StudentPaymentController extends Controller
                 $deleteGate = 'student_payment_delete';
                 $crudRoutePart = 'student-payments';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -92,7 +92,7 @@ class StudentPaymentController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $studentPayment->id]);
         }
 
-        return redirect()->route('admin.student-payments.index');
+        return redirect()->route('tenant.student-payments.index');
     }
 
     public function edit(StudentPayment $studentPayment)
@@ -126,7 +126,7 @@ class StudentPaymentController extends Controller
             }
         }
 
-        return redirect()->route('admin.student-payments.index');
+        return redirect()->route('tenant.student-payments.index');
     }
 
     public function show(StudentPayment $studentPayment)

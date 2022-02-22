@@ -32,7 +32,7 @@ class InvoiceController extends Controller
                 $deleteGate = 'invoice_delete';
                 $crudRoutePart = 'invoices';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -80,7 +80,7 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::create($request->all());
 
-        return redirect()->route('admin.invoices.index');
+        return redirect()->route('tenant.invoices.index');
     }
 
     public function edit(Invoice $invoice)
@@ -98,7 +98,7 @@ class InvoiceController extends Controller
     {
         $invoice->update($request->all());
 
-        return redirect()->route('admin.invoices.index');
+        return redirect()->route('tenant.invoices.index');
     }
 
     public function show(Invoice $invoice)

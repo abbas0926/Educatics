@@ -54,7 +54,7 @@ class TaskController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $task->id]);
         }
 
-        return redirect()->route('admin.tasks.index');
+        return redirect()->route('tenant.tasks.index');
     }
 
     public function edit(Task $task)
@@ -87,7 +87,7 @@ class TaskController extends Controller
             $task->attachment->delete();
         }
 
-        return redirect()->route('admin.tasks.index');
+        return redirect()->route('tenant.tasks.index');
     }
 
     public function show(Task $task)

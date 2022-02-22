@@ -35,7 +35,7 @@ class EventController extends Controller
                 $deleteGate = 'event_delete';
                 $crudRoutePart = 'events';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -104,7 +104,7 @@ class EventController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $event->id]);
         }
 
-        return redirect()->route('admin.events.index');
+        return redirect()->route('tenant.events.index');
     }
 
     public function edit(Event $event)
@@ -143,7 +143,7 @@ class EventController extends Controller
             }
         }
 
-        return redirect()->route('admin.events.index');
+        return redirect()->route('tenant.events.index');
     }
 
     public function show(Event $event)

@@ -40,7 +40,7 @@ class MarketingCampaignController extends Controller
                 $deleteGate = 'marketing_campaign_delete';
                 $crudRoutePart = 'marketing-campaigns';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -103,7 +103,7 @@ class MarketingCampaignController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $marketingCampaign->id]);
         }
 
-        return redirect()->route('admin.marketing-campaigns.index');
+        return redirect()->route('tenant.marketing-campaigns.index');
     }
 
     public function edit(MarketingCampaign $marketingCampaign)
@@ -146,7 +146,7 @@ class MarketingCampaignController extends Controller
             }
         }
 
-        return redirect()->route('admin.marketing-campaigns.index');
+        return redirect()->route('tenant.marketing-campaigns.index');
     }
 
     public function show(MarketingCampaign $marketingCampaign)

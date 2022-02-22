@@ -35,7 +35,7 @@ class FormationController extends Controller
                 $deleteGate = 'formation_delete';
                 $crudRoutePart = 'formations';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -88,7 +88,7 @@ class FormationController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $formation->id]);
         }
 
-        return redirect()->route('admin.formations.index');
+        return redirect()->route('tenant.formations.index');
     }
 
     public function edit(Formation $formation)
@@ -127,7 +127,7 @@ class FormationController extends Controller
             }
         }
 
-        return redirect()->route('admin.formations.index');
+        return redirect()->route('tenant.formations.index');
     }
 
     public function show(Formation $formation)

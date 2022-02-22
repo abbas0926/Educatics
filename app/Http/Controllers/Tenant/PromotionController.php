@@ -33,7 +33,7 @@ class PromotionController extends Controller
                 $deleteGate = 'promotion_delete';
                 $crudRoutePart = 'promotions';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -76,7 +76,7 @@ class PromotionController extends Controller
         $promotion = Promotion::create($request->all());
         $promotion->students()->sync($request->input('students', []));
 
-        return redirect()->route('admin.promotions.index');
+        return redirect()->route('tenant.promotions.index');
     }
 
     public function edit(Promotion $promotion)
@@ -97,7 +97,7 @@ class PromotionController extends Controller
         $promotion->update($request->all());
         $promotion->students()->sync($request->input('students', []));
 
-        return redirect()->route('admin.promotions.index');
+        return redirect()->route('tenant.promotions.index');
     }
 
     public function show(Promotion $promotion)

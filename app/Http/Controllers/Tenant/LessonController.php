@@ -39,7 +39,7 @@ class LessonController extends Controller
                 $deleteGate = 'lesson_delete';
                 $crudRoutePart = 'lessons';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -110,7 +110,7 @@ class LessonController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $lesson->id]);
         }
 
-        return redirect()->route('admin.lessons.index');
+        return redirect()->route('tenant.lessons.index');
     }
 
     public function edit(Lesson $lesson)
@@ -162,7 +162,7 @@ class LessonController extends Controller
             }
         }
 
-        return redirect()->route('admin.lessons.index');
+        return redirect()->route('tenant.lessons.index');
     }
 
     public function show(Lesson $lesson)

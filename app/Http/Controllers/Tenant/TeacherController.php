@@ -35,7 +35,7 @@ class TeacherController extends Controller
                 $deleteGate = 'teacher_delete';
                 $crudRoutePart = 'teachers';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -91,7 +91,7 @@ class TeacherController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $teacher->id]);
         }
 
-        return redirect()->route('admin.teachers.index');
+        return redirect()->route('tenant.teachers.index');
     }
 
     public function edit(Teacher $teacher)
@@ -127,7 +127,7 @@ class TeacherController extends Controller
             $teacher->cv->delete();
         }
 
-        return redirect()->route('admin.teachers.index');
+        return redirect()->route('tenant.teachers.index');
     }
 
     public function show(Teacher $teacher)

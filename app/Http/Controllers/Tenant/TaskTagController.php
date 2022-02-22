@@ -33,7 +33,7 @@ class TaskTagController extends Controller
     {
         $taskTag = TaskTag::create($request->all());
 
-        return redirect()->route('admin.task-tags.index');
+        return redirect()->route('tenant.task-tags.index');
     }
 
     public function edit(TaskTag $taskTag)
@@ -47,7 +47,7 @@ class TaskTagController extends Controller
     {
         $taskTag->update($request->all());
 
-        return redirect()->route('admin.task-tags.index');
+        return redirect()->route('tenant.task-tags.index');
     }
 
     public function show(TaskTag $taskTag)

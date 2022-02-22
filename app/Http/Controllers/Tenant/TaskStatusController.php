@@ -33,7 +33,7 @@ class TaskStatusController extends Controller
     {
         $taskStatus = TaskStatus::create($request->all());
 
-        return redirect()->route('admin.task-statuses.index');
+        return redirect()->route('tenant.task-statuses.index');
     }
 
     public function edit(TaskStatus $taskStatus)
@@ -47,7 +47,7 @@ class TaskStatusController extends Controller
     {
         $taskStatus->update($request->all());
 
-        return redirect()->route('admin.task-statuses.index');
+        return redirect()->route('tenant.task-statuses.index');
     }
 
     public function show(TaskStatus $taskStatus)

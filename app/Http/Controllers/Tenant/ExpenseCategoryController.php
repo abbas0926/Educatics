@@ -33,7 +33,7 @@ class ExpenseCategoryController extends Controller
     {
         $expenseCategory = ExpenseCategory::create($request->all());
 
-        return redirect()->route('admin.expense-categories.index');
+        return redirect()->route('tenant.expense-categories.index');
     }
 
     public function edit(ExpenseCategory $expenseCategory)
@@ -47,7 +47,7 @@ class ExpenseCategoryController extends Controller
     {
         $expenseCategory->update($request->all());
 
-        return redirect()->route('admin.expense-categories.index');
+        return redirect()->route('tenant.expense-categories.index');
     }
 
     public function show(ExpenseCategory $expenseCategory)

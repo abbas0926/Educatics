@@ -33,7 +33,7 @@ class GroupController extends Controller
                 $deleteGate = 'group_delete';
                 $crudRoutePart = 'groups';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -83,7 +83,7 @@ class GroupController extends Controller
         $group = Group::create($request->all());
         $group->students()->sync($request->input('students', []));
 
-        return redirect()->route('admin.groups.index');
+        return redirect()->route('tenant.groups.index');
     }
 
     public function edit(Group $group)
@@ -104,7 +104,7 @@ class GroupController extends Controller
         $group->update($request->all());
         $group->students()->sync($request->input('students', []));
 
-        return redirect()->route('admin.groups.index');
+        return redirect()->route('tenant.groups.index');
     }
 
     public function show(Group $group)

@@ -31,7 +31,7 @@ class SiteSettingController extends Controller
                 $deleteGate = 'site_setting_delete';
                 $crudRoutePart = 'site-settings';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -69,7 +69,7 @@ class SiteSettingController extends Controller
     {
         $siteSetting = SiteSetting::create($request->all());
 
-        return redirect()->route('admin.site-settings.index');
+        return redirect()->route('tenant.site-settings.index');
     }
 
     public function edit(SiteSetting $siteSetting)
@@ -83,7 +83,7 @@ class SiteSettingController extends Controller
     {
         $siteSetting->update($request->all());
 
-        return redirect()->route('admin.site-settings.index');
+        return redirect()->route('tenant.site-settings.index');
     }
 
     public function show(SiteSetting $siteSetting)

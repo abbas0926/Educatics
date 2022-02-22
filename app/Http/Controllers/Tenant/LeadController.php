@@ -34,7 +34,7 @@ class LeadController extends Controller
                 $deleteGate = 'lead_delete';
                 $crudRoutePart = 'leads';
 
-                return view('partials.admin.datatablesActions', compact(
+                return view('partials.tenant.datatablesActions', compact(
                 'viewGate',
                 'editGate',
                 'deleteGate',
@@ -91,7 +91,7 @@ class LeadController extends Controller
         $lead->formations()->sync($request->input('formations', []));
         $lead->events()->sync($request->input('events', []));
 
-        return redirect()->route('admin.leads.index');
+        return redirect()->route('tenant.leads.index');
     }
 
     public function edit(Lead $lead)
@@ -115,7 +115,7 @@ class LeadController extends Controller
         $lead->formations()->sync($request->input('formations', []));
         $lead->events()->sync($request->input('events', []));
 
-        return redirect()->route('admin.leads.index');
+        return redirect()->route('tenant.leads.index');
     }
 
     public function show(Lead $lead)

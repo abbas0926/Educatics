@@ -52,7 +52,7 @@ class ArticleController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $article->id]);
         }
 
-        return redirect()->route('admin.articles.index');
+        return redirect()->route('tenant.articles.index');
     }
 
     public function edit(Article $article)
@@ -95,7 +95,7 @@ class ArticleController extends Controller
             }
         }
 
-        return redirect()->route('admin.articles.index');
+        return redirect()->route('tenant.articles.index');
     }
 
     public function show(Article $article)
