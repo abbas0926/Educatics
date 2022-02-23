@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Tenant\MassDestroyLeadRequest;
+use App\Http\Requests\Tenant\StoreLeadInteractionRequest;
 use App\Http\Requests\Tenant\StoreLeadRequest;
 use App\Http\Requests\Tenant\UpdateLeadRequest;
 use App\Models\Event;
 use App\Models\Formation;
 use App\Models\Lead;
+use App\Models\LeadInteraction;
 use App\Models\MarketingCampaign;
 use Gate;
 use Illuminate\Http\Request;
@@ -123,7 +125,7 @@ class LeadController extends Controller
         abort_if(Gate::denies('lead_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $lead->load('formations', 'events', 'marketing_campaign', 'leadLeadInteractions', 'leadMarketingCampaigns');
-
+        // dd( $lead->recentInteractions);
         return view('tenant.leads.show', compact('lead'));
     }
 
@@ -141,5 +143,18 @@ class LeadController extends Controller
         Lead::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+    public function addInteraction(StoreLeadInteractionRequest $request ,Lead $lead) {
+
+        $leadInteraction = LeadInteraction::create($request->validated());
+        return redirect()->back();
+
+    }
+
+    public function dettachInterraction(Request $request,LeadInteraction $interaction){
+
+        abort_if(Gate::denies('lead_interaction_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $interaction->delete();
+        return redirect()->back();
     }
 }

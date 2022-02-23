@@ -25,6 +25,8 @@ class StoreLeadInteractionRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'notes'=>[],
+            'communication_channel'=>[],
         ];
     }
 }

@@ -825,4 +825,9 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
+    'modals'=>[
+        'confirm_delete'=>'Êtes-vous sûr de bien vouloir supprimer cet élément?',
+        'accept_delete'=>'Oui!',
+        'confirm_action'=>'Veuillez confirmer cette action!',
+    ]
 ];

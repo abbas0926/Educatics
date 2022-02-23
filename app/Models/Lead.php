@@ -57,6 +57,11 @@ class Lead extends Model
     {
         return $this->hasMany(LeadInteraction::class, 'lead_id', 'id');
     }
+    public function recentInteractions(){
+
+        return $this->hasMany(LeadInteraction::class)
+                    ->orderBy('created_at','desc');
+    }
 
     public function leadMarketingCampaigns()
     {

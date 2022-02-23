@@ -106,6 +106,8 @@ Route::group([ 'middleware' => ['web' ,
 
     // Lead
     Route::delete('leads/destroy', 'LeadController@massDestroy')->name('leads.massDestroy');
+    Route::post('leads/{lead}/interact','LeadController@addInteraction')->name('leads.addInteraction');
+    Route::delete('leads/interaction/{interaction}/','LeadController@dettachInterraction')->name('leads.dettachInterraction');
     Route::resource('leads', 'LeadController');
 
     // Lead Interaction

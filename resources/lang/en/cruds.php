@@ -1063,6 +1063,14 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
+
+
+    'modals'=>[
+        'confirm_delete'=>'Are you sure you want to delete this item?',
+        'accept_delete'=>'Yes!',
+        'confirm_action'=>'Please confirm this action!',
+
+    ]
     
 
 ];

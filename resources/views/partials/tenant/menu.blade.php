@@ -115,7 +115,8 @@
                             </a>
                         </li>
                     @endcan
-                    @can('lead_interaction_access')
+
+                    {{-- @can('lead_interaction_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('tenant.lead-interactions.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/lead-interactions') || request()->is('admin/lead-interactions/*') ? 'c-active' : '' }}">
@@ -126,6 +127,7 @@
                             </a>
                         </li>
                     @endcan
+                     --}}
                 </ul>
             </li>
         @endcan

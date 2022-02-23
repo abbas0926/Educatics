@@ -63,9 +63,9 @@ class LeadInteractionController extends Controller
         abort_if(Gate::denies('lead_interaction_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $leads = Lead::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
+        
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
+        
         return view('tenant.leadInteractions.create', compact('leads', 'users'));
     }
 
