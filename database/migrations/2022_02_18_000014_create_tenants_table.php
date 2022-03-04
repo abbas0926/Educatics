@@ -9,7 +9,7 @@ class CreateTenantsTable extends Migration
     public function up()
     {
         Schema::create('tenants', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->string('id')->primary();
             $table->string('store_name')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
@@ -17,7 +17,7 @@ class CreateTenantsTable extends Migration
             $table->datetime('valid_until');
             $table->longText('store_location')->nullable();
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
             $table->json('data')->nullable();
         });
     }
