@@ -13,7 +13,7 @@ class CreateDomainsTable extends Migration
             $table->string('domain')->unique();
             $table->string('domain_type');
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 }

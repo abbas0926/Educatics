@@ -9,6 +9,7 @@ class AddRelationshipFieldsToTenantsTable extends Migration
     public function up()
     {
         Schema::table('tenants', function (Blueprint $table) {
+            
             $table->unsignedBigInteger('package_id')->nullable();
             $table->foreign('package_id', 'package_fk_6023008')->references('id')->on('packages');
             $table->unsignedBigInteger('created_by_id')->nullable();

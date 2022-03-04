@@ -7,8 +7,8 @@ use App\Models\Tenant;
 
 return [
     'tenant_model' => Tenant::class,
-    // 'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
-    'id_generator' => null,
+    'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
+    // 'id_generator' => null,
 
     'domain_model' => Domain::class,
 
@@ -126,7 +126,7 @@ return [
          * edge cases, it can cause issues (like using Passport with Vapor - see #196), so
          * you may want to disable this if you are experiencing these edge case issues.
          */
-        'suffix_storage_path' => true,
+        'suffix_storage_path' => false,
 
         /**
          * By default, asset() calls are made multi-tenant too. You can use global_asset() and mix()
