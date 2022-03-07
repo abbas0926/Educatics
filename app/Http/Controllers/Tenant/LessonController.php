@@ -12,6 +12,7 @@ use App\Models\Group;
 use App\Models\Lesson;
 use App\Models\Student;
 use App\Models\Teacher;
+use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -97,6 +98,8 @@ class LessonController extends Controller
     public function store(StoreLessonRequest $request)
     {
         $lesson = Lesson::create($request->all());
+        $lesson->date_only=Carbon::parse( $request->start_at)->format('Y-m-d');
+        $lesson->save();
         $lesson->presence_students()->sync($request->input('presence_students', []));
         foreach ($request->input('support', []) as $file) {
             $lesson->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('support');
@@ -133,6 +136,8 @@ class LessonController extends Controller
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
         $lesson->update($request->all());
+        $lesson->date_only=Carbon::parse( $request->start_at)->format('Y-m-d');
+        $lesson->save();
         $lesson->presence_students()->sync($request->input('presence_students', []));
         if (count($lesson->support) > 0) {
             foreach ($lesson->support as $media) {

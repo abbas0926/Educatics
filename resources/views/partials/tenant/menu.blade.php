@@ -80,6 +80,17 @@
                             </a>
                         </li>
                     @endcan
+                    @can('teacher_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route('tenant.presences.index') }}"
+                                class="c-sidebar-nav-link {{ request()->is('admin/presences') || request()->is('admin/presences/*') ? 'c-active' : '' }}">
+                                <i class="fa-fw fas fa-chalkboard-teacher c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.presences.presences') }}
+                            </a>
+                        </li>
+                    @endcan
                     @can('lesson_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('tenant.lessons.index') }}"

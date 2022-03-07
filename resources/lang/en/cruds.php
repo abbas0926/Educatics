@@ -1070,7 +1070,11 @@ return [
         'accept_delete'=>'Yes!',
         'confirm_action'=>'Please confirm this action!',
 
-    ]
+    ],
     
+    'presences'=>[
+        'presences'=>'Presences',
+        'create'=>'Create'
+    ],
 
 ];

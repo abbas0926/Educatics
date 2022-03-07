@@ -157,7 +157,8 @@ Route::group([ 'middleware' => ['web' ,
     Route::post('lessons/media', 'LessonController@storeMedia')->name('lessons.storeMedia');
     Route::post('lessons/ckmedia', 'LessonController@storeCKEditorImages')->name('lessons.storeCKEditorImages');
     Route::resource('lessons', 'LessonController');
-
+    // student presences
+    Route::resource('presences','StudentPresencesController');
     // Employee Presence
     Route::delete('employee-presences/destroy', 'EmployeePresenceController@massDestroy')->name('employee-presences.massDestroy');
     Route::resource('employee-presences', 'EmployeePresenceController');
