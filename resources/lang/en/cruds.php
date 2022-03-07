@@ -1063,6 +1063,9 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    
+    'presences'=>[
+        'presences'=>'Presences',
+        'create'=>'Create'
+    ],
 
 ];
