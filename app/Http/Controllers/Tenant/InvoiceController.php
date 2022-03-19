@@ -78,8 +78,9 @@ class InvoiceController extends Controller
 
     public function store(StoreInvoiceRequest $request)
     {
+        dd($request->all());
         $invoice = Invoice::create($request->all());
-
+        
         return redirect()->route('tenant.invoices.index');
     }
 
