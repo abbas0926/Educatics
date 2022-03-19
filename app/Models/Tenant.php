@@ -17,7 +17,7 @@ use Stancl\Tenancy\Database\Concerns\HasDomains;
 
 class Tenant extends BaseTenant implements HasMedia ,TenantWithDatabase
 {
-    use SoftDeletes;
+    
     use InteractsWithMedia;
     use HasFactory;
     use HasDomains;

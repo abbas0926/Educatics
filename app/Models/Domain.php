@@ -10,7 +10,7 @@ use Stancl\Tenancy\Database\Models\Domain as BaseDomain;
 
 class Domain extends BaseDomain
 {
-    use SoftDeletes;
+    
     use HasFactory;
 
     public const DOMAIN_TYPE_SELECT = [
