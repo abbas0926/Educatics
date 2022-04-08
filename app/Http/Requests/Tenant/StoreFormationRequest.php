@@ -6,6 +6,7 @@ use App\Models\Formation;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
+use Illuminate\Validation\Rule;
 
 class StoreFormationRequest extends FormRequest
 {
@@ -35,6 +36,8 @@ class StoreFormationRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'payment_frequency'=>['nullable', Rule::in(array_keys(Formation::PAYMENT_TYPE)) ],
+            'duration_type'=>['nullable', Rule::in(array_keys(Formation::DURATION_SELECT )) ],
         ];
     }
 }

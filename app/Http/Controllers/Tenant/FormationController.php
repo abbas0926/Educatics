@@ -22,47 +22,49 @@ class FormationController extends Controller
     {
         abort_if(Gate::denies('formation_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        if ($request->ajax()) {
-            $query = Formation::query()->select(sprintf('%s.*', (new Formation())->table));
-            $table = Datatables::of($query);
+        // if ($request->ajax()) {
 
-            $table->addColumn('placeholder', '&nbsp;');
-            $table->addColumn('actions', '&nbsp;');
+        //     $query = Formation::query()->select(sprintf('%s.*', (new Formation())->table));
+        //     $table = Datatables::of($query);
 
-            $table->editColumn('actions', function ($row) {
-                $viewGate = 'formation_show';
-                $editGate = 'formation_edit';
-                $deleteGate = 'formation_delete';
-                $crudRoutePart = 'formations';
+        //     $table->addColumn('placeholder', '&nbsp;');
+        //     $table->addColumn('actions', '&nbsp;');
 
-                return view('partials.tenant.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
-            });
+        //     $table->editColumn('actions', function ($row) {
+        //         $viewGate = 'formation_show';
+        //         $editGate = 'formation_edit';
+        //         $deleteGate = 'formation_delete';
+        //         $crudRoutePart = 'formations';
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
-            $table->editColumn('title', function ($row) {
-                return $row->title ? $row->title : '';
-            });
-            $table->editColumn('price', function ($row) {
-                return $row->price ? $row->price : '';
-            });
-            $table->editColumn('status', function ($row) {
-                return $row->status ? Formation::STATUS_SELECT[$row->status] : '';
-            });
+        //         return view('partials.tenant.datatablesActions', compact(
+        //         'viewGate',
+        //         'editGate',
+        //         'deleteGate',
+        //         'crudRoutePart',
+        //         'row'
+        //     ));
+        //     });
 
-            $table->rawColumns(['actions', 'placeholder']);
+        //     $table->editColumn('id', function ($row) {
+        //         return $row->id ? $row->id : '';
+        //     });
+        //     $table->editColumn('title', function ($row) {
+        //         return $row->title ? $row->title : '';
+        //     });
+        //     $table->editColumn('price', function ($row) {
+        //         return $row->price ? $row->price : '';
+        //     });
+        //     $table->editColumn('status', function ($row) {
+        //         return $row->status ? Formation::STATUS_SELECT[$row->status] : '';
+        //     });
 
-            return $table->make(true);
-        }
+        //     $table->rawColumns(['actions', 'placeholder']);
 
-        return view('tenant.formations.index');
+        //     return $table->make(true);
+        // }
+        $formations =Formation::filter();
+
+        return view('tenant.formations.index', compact('formations'));
     }
 
     public function create()
@@ -87,8 +89,7 @@ class FormationController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $formation->id]);
         }
-
-        return redirect()->route('tenant.formations.index');
+        return redirect()->route('tenant.formations.show',['formation' => $formation]);
     }
 
     public function edit(Formation $formation)
