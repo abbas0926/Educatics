@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-
+use Spatie\QueryBuilder\QueryBuilder;
 class Student extends Model implements HasMedia
 {
     use SoftDeletes;
@@ -35,6 +35,7 @@ class Student extends Model implements HasMedia
         'first_name',
         'last_name',
         'email',
+        'phone',
         'birthdate',
         'adresse',
         'study_level',
@@ -101,5 +102,22 @@ class Student extends Model implements HasMedia
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function getFullNameAttribute(){
+        return $this->first_name ." ". $this->last_name;
+    }
+
+    public function getPhotoUrlAttribute(){ 
+        if($this->photo) return $this->photo->getUrl();
+        else return global_asset('images/avatar.png');
+    }
+
+    public static function filter (){
+        $students = QueryBuilder::for(Student::class )
+        ->allowedFilters(['first_name','last_name','phone','email'])
+        ->allowedSorts('created_at')        
+        ->get();
+        return $students;
     }
 }

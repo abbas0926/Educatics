@@ -32,6 +32,10 @@ class StoreStudentRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'phone' => [
+                'string',
+                'nullable',
+            ],
             'birthdate' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',

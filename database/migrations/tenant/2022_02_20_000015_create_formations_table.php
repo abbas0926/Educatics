@@ -11,11 +11,13 @@ class CreateFormationsTable extends Migration
         Schema::create('formations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('slug')->nullable();
             $table->longText('description')->nullable();
             $table->decimal('price', 15, 2);
             $table->string('duration')->nullable();
+            $table->string('duration_type')->nullable(); //hour , dya , week , month.
+            $table->string('payment_frequency')->nullable(); //per lesson  ,per week per month ,onetime.
             $table->string('status')->nullable();
-            $table->string('slug')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
