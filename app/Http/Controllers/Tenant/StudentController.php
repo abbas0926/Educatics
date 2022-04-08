@@ -72,8 +72,11 @@ class StudentController extends Controller
 
             return $table->make(true);
         }
+        $students =Student::filter();
 
-        return view('tenant.students.index');
+
+
+        return view('tenant.students.index' , compact('students'));
     }
 
     public function create()
