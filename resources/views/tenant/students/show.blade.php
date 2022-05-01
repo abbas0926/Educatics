@@ -1,11 +1,11 @@
 @extends('layouts.tenant')
 @section('content')
     <div class="row">
-        <div class="col-md-5 col-lg-3">
+        <div class="col-md-5 ">
             <div class="card">
                 <div class="card-header text-center">
-                    <img src="{{$student->photo_url}}" class="img-fluid rounded-circle" alt="{{ $student->fullName }}" />
-                    <div class="card-title"> {{ $student->fullName }} </div>
+                    <img src="{{$student->photo_url}}" class="img-fluid rounded-circle w-50" alt="{{ $student->fullName }}" />
+                    <h5 class="card-title mt-3">{{ $student->fullName }} </h5>
                     <strong class="muted"> {{ $student->phone }}</strong>
                 </div>
                 <div class="card-body">
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-7 col-lg-9">
+        <div class="col-md-7">
             <div class="card mb-2">
                 <div class="card-header">
                     {{ trans('cruds.invoice.title') }}

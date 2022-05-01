@@ -5,7 +5,7 @@
 
             <a class="btn btn-secondary mx-2" data-toggle="collapse" href="#filterCard" role="button" aria-expanded="false"
                 aria-controls="filterCard">
-                {{ __('cruds.filter') }}
+                {{ __('Filter') }}
             </a>
             @can('student_create')
                 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#createStudentCanva"
@@ -20,7 +20,7 @@
 
     <div class="card mt-2 collapse  @if (request('filter')) show @endif" id="filterCard">
         <div class="card-header">
-            {{ __('cruds.filter_students') }}
+            {{ __('Filter students') }}
         </div>
         <div class="card-body">
             <form action="" method="get">
@@ -29,34 +29,34 @@
                         <div class="form-group">
                             <input type="text" class="form-control" name="filter[first_name]" id="first_name"
                                 value="{{ request('filter.first_name', '') }}" aria-describedby="helpId"
-                                placeholder="{{ __('cruds.first_name') }}">
+                                placeholder="{{ __('First name') }}">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <input type="text" class="form-control" name="filter[last_name]" id="last_name"
                                 value="{{ request('filter.last_name', '') }}" aria-describedby="helpId"
-                                placeholder="{{ __('cruds.last_name') }}">
+                                placeholder="{{ __('Last name') }}">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <input type="phone" class="form-control" name="filter[phone]" id="phone"
                                 value="{{ request('filter.phone', '') }}" aria-describedby="helpId"
-                                placeholder="{{ __('cruds.phone') }}">
+                                placeholder="{{ __('Phone number') }}">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <input type="email" class="form-control" name="filter[email]" id="email"
-                                value="{{ request('filter.email', '') }}" aria-describedby="helpId" placeholder="Email">
+                                value="{{ request('Email', '') }}" aria-describedby="helpId" placeholder="Email">
                         </div>
                     </div>
 
                 </div>
                 <div class="row d-felx justify-content-end">
                     <div class="col-md-3 d-grid gap-2">
-                        <button type="submit" id="filter" class="btn btn-primary">{{ __('cruds.filter') }}</button>
+                        <button type="submit" id="filter" class="btn btn-primary">{{ __('Filter') }}</button>
                     </div>
 
                 </div>
@@ -70,21 +70,19 @@
 
 
 
-    <div class="row">
+    <div class="row row-cols-md-4">
         @foreach ($students as $student)
-            <div class="col-md-3 col-sm-6 col-lg-2">
-                <a href="{{ route('tenant.students.show', ['student' => $student]) }}">
-                    <div class="card">
-                        <div class="card-header">
-                            <img src="{{ $student->photo_url }}" class="img-fluid" alt="Student image">
-                        </div>
-                        <div class="card-header">
-                            {{ $student->full_name }}
-                        </div>
-
+            <a href="{{ route('tenant.students.show', ['student' => $student]) }}">
+                <div class="card">
+                    <div class="card-header ">
+                        <img src="{{ $student->photo_url }}" class="img-fluid rounded-circle" alt="Student image">
                     </div>
-                </a>
-            </div>
+                    <div class="card-header">
+                        {{ $student->full_name }}
+                    </div>
+
+                </div>
+            </a>
         @endforeach
     </div>
 @endsection

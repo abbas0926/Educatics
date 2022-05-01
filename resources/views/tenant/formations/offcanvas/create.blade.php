@@ -1,6 +1,6 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="createFormationCanva" aria-labelledby="createFormationCanvaLabel">
     <div class="offcanvas-header">
-        <h5 id="createFormationCanvaLabel">{{ __('cruds.create_formation') }}</h5>
+        <h5 id="createFormationCanvaLabel">{{ __('Create new formation') }}</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -46,7 +46,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <div class="mb-3">
-                            <label for="" class="form-label">{{ __('cruds.choose_duration_type') }}</label>
+                            <label for="" class="form-label">{{ __('Choose duration unit') }}</label>
                             <select class="form-control" name="duration_type" id="">
                                 @foreach (App\Models\Formation::DURATION_SELECT as $key => $value)
                                     <option value="{{ $key }}"
@@ -76,7 +76,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <div class="mb-3">
-                            <label for="" class="form-label">{{ __('cruds.choose_payment_type') }}</label>
+                            <label for="" class="form-label">{{ __('Payment frequency') }}</label>
                             <select class="form-control" name="payment_frequency" id="">
                                 @foreach (App\Models\Formation::PAYMENT_TYPE as $key => $value)
                                     <option value="{{ $key }}"
@@ -136,9 +136,10 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
-                    {{ trans('global.save') }}
-                </button>
+                <div class="d-grid gap-2">
+                  <button type="submit"  class="btn btn-success">{{__('Create')}}</button>
+                </div>
+
             </div>
         </form>
     </div>

@@ -1,127 +1,121 @@
 @extends('layouts.tenant')
 @section('content')
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <img src="{{ $formation->featured_image_url }}" alt="{{ $formation->title }}" class="card-img-top"
+                    style="width: 100%;
+                                    aspect-ratio: 16 / 9;
+                                    object-fit: cover;">
+                <div class="card-header">
+                    <h5 class="card-title">{{ $formation->title }}</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>{{ __('cruds.price') }}</td>
+                            <td><strong>{{ $formation->price_formatted }}</strong></td>
 
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.formation.title') }}
-    </div>
-
-    <div class="card-body">
-        <div class="form-group">
-            <div class="form-group">
-                <a class="btn btn-default" href="{{ route('tenant.formations.index') }}">
-                    {{ trans('global.back_to_list') }}
-                </a>
+                        </tr>
+                        <tr>
+                            <td>{{ __('cruds.duration') }}</td>
+                            <td><strong>{{ $formation->duration_formatted }}</strong></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <table class="table table-bordered table-striped">
-                <tbody>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.formation.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $formation->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.formation.fields.title') }}
-                        </th>
-                        <td>
-                            {{ $formation->title }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.formation.fields.description') }}
-                        </th>
-                        <td>
-                            {!! $formation->description !!}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.formation.fields.price') }}
-                        </th>
-                        <td>
-                            {{ $formation->price }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.formation.fields.featured_image') }}
-                        </th>
-                        <td>
-                            @if($formation->featured_image)
-                                <a href="{{ $formation->featured_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $formation->featured_image->getUrl('thumb') }}">
-                                </a>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.formation.fields.duration') }}
-                        </th>
-                        <td>
-                            {{ $formation->duration }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.formation.fields.syllabus') }}
-                        </th>
-                        <td>
-                            @foreach($formation->syllabus as $key => $media)
-                                <a href="{{ $media->getUrl() }}" target="_blank">
-                                    {{ trans('global.view_file') }}
-                                </a>
+        </div>
+        <div class="col-md-7">
+            <div class="card mb-3">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="card-title"> {{ __('Promotions') }}</div>
+                    <div class="card-toolbar">
+                        <button class="btn btn-sm btn-success" data-bs-toggle="offcanvas"
+                            data-bs-target="#createPromotionCanva" aria-controls="createPromotionCanva">
+                            <i class="fa fa-plus"></i>
+                            {{ __('Add new') }}
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th> {{ __('Name') }} </th>
+                                <th> {{ __('Starting date') }} </th>
+                                <th> {{ __('Ending date') }} </th>
+                                <th> {{ __('Price') }} </th>
+                                <th> {{ __('Actions') }} </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($formation->promotions as $promotion)
+                                <tr>
+                                    <td> {{ $promotion->name }} </td>
+                                    <td> {{ $promotion->starting_date }} </td>
+                                    <td> {{ $promotion->ending_date }} </td>
+                                    <td> {{ $promotion->price }} </td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-clean"><i class="fa fa-trash"></i></a>
+                                        <a href="" class="btn btn-sm btn-clean"><i class="fa fa-edit"></i></a>
+                                    </td>
+                                </tr>
                             @endforeach
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.formation.fields.status') }}
-                        </th>
-                        <td>
-                            {{ App\Models\Formation::STATUS_SELECT[$formation->status] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.formation.fields.slug') }}
-                        </th>
-                        <td>
-                            {{ $formation->slug }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="form-group">
-                <a class="btn btn-default" href="{{ route('tenant.formations.index') }}">
-                    {{ trans('global.back_to_list') }}
-                </a>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="card-title"> {{ __('Groups') }}</div>
+                    <div class="card-toolbar">
+                        <button class="btn btn-sm btn-success" data-bs-toggle="offcanvas" data-bs-target="#createGroupCanva"
+                            aria-controls="createGroupCanva">
+                            <i class="fa fa-plus"></i>
+                            {{ __('Add new') }}
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th> {{ __('Name') }} </th>
+                                <th> {{ __('Promotion') }} </th>
+                                <th> {{ __('Students') }} </th>
+
+                                <th> {{ __('Actions') }} </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($formation->groups as $group)
+                                <tr>
+                                    <td> <a href="{{route('tenant.groups.show',['group'=>$group])}}">  {{ $group->name }} </a> </td>
+                                    <td> {{ $group->promotion->name }} </td>
+                                    <td>  <span class="badge rounded-pill bg-primary">{{ $group->students->count() }}</span>  </td>
+                                   
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-clean"><i class="fa fa-users"></i></a>
+                                        <a href="" class="btn btn-sm btn-clean"><i class="fa fa-trash"></i></a>
+                                        <a href="" class="btn btn-sm btn-clean"><i class="fa fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
+@endsection
 
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.relatedData') }}
-    </div>
-    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="#formation_promotions" role="tab" data-toggle="tab">
-                {{ trans('cruds.promotion.title') }}
-            </a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="formation_promotions">
-            @includeIf('admin.formations.relationships.formationPromotions', ['promotions' => $formation->formationPromotions])
-        </div>
-    </div>
-</div>
-
+@section('canvas')
+    @include('tenant.formations.offcanvas.create-promotion', [
+        'formation' => $formation,
+    ])
+    @include('tenant.formations.offcanvas.create-group', [
+        'promotions' => $formation->promotions,
+    ])
 @endsection
