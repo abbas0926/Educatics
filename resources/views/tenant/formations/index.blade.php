@@ -7,7 +7,8 @@
 
             <a class="btn btn-secondary mx-2" data-toggle="collapse" href="#filterCard" role="button" aria-expanded="false"
                 aria-controls="filterCard">
-                {{ __('cruds.filter') }}
+                {{ __('Filter') }}
+                
             </a>
             @can('formation_create')
                 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#createFormationCanva"
@@ -23,7 +24,7 @@
 
     <div class="card mt-2 collapse mb-3  @if (request('filter')) show @endif" id="filterCard">
         <div class="card-header">
-            {{ __('cruds.filter_formations') }}
+            {{ __('Filter formation') }}
         </div>
         <div class="card-body">
             <form action="" method="get">
@@ -32,7 +33,7 @@
                         <div class="form-group">
                             <input type="text" class="form-control" name="filter[title]" id="title"
                                 value="{{ request('filter.title', '') }}" aria-describedby="helpId"
-                                placeholder="{{ __('cruds.title') }}">
+                                placeholder="{{ __('Title') }}">
                         </div>
                     </div>
 
@@ -42,9 +43,9 @@
                     <div class="col-md-4 d-flex justify-content-end">
                         @if (request('filter'))
                             <a class="btn btn-secondary mx-2" href="{{ route('tenant.formations.index') }}"> <i
-                                    class="fa fa-trash"></i> {{ __('cruds.clear_filter') }} </a>
+                                    class="fa fa-trash"></i> {{ __('Clear filter') }} </a>
                         @endif
-                        <button type="submit" id="filter" class="btn btn-primary">{{ __('cruds.filter') }}</button>
+                        <button type="submit" id="filter" class="btn btn-primary">{{ __('Filter') }}</button>
                     </div>
 
                 </div>
@@ -60,7 +61,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
               <strong>
-                    {{__('cruds.no_formations_available')}}
+                    {{__('No formation available')}}
             </strong> 
             </div>
             
@@ -75,7 +76,7 @@
                     <a href="{{ route('tenant.formations.show', ['formation' => $formation]) }}">
                         <img src="{{ $formation->featured_image_url }}" class="card-img-top"
                             alt="{{ $formation->title }}" style="width: 100%;
-                            height: 15vw;
+                            aspect-ratio: 16 / 9;
                             object-fit: cover;">
                     </a>
 

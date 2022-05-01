@@ -81,9 +81,12 @@ class Formation extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function formationPromotions()
+    public function promotions()
     {
         return $this->hasMany(Promotion::class, 'formation_id', 'id');
+    }
+    public function groups(){
+        return $this->hasManyThrough(Group::class,Promotion::class);
     }
 
     public function getFeaturedImageAttribute()
@@ -110,6 +113,9 @@ class Formation extends Model implements HasMedia
         else{
             return $this->getPlaceholder();
         }
+    }
+    public function getDurationFormattedAttribute(){ 
+        return "{$this->duration } {$this->duration_type} ";
     }
     public function getPlaceholder(){
         return "https://via.placeholder.com/1920x1080?text={$this->title}";

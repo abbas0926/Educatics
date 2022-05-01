@@ -135,7 +135,8 @@ class FormationController extends Controller
     {
         abort_if(Gate::denies('formation_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $formation->load('formationPromotions');
+        $formation->load('groups');
+        $formation->load('promotions');
 
         return view('tenant.formations.show', compact('formation'));
     }

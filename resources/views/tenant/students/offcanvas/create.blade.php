@@ -1,7 +1,7 @@
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="createStudentCanva" aria-labelledby="createStudentCanvaLabel">
   <div class="offcanvas-header">
-    <h5 id="createStudentCanvaLabel">{{__('cruds.create_student')}}</h5>
+    <h5 id="createStudentCanvaLabel">{{__('Create new student')}}</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -49,10 +49,10 @@
             <span class="help-block">{{ trans('cruds.student.fields.email_helper') }}</span>
         </div>
         <div class="form-group">
-          <label for="" class="form-label">{{__('cruds.gender')}} </label>
+          <label for="" class="form-label">{{__('Gender')}} </label>
           <select class="form-control" name="gender" id="">
-            <option value="female">{{__('cruds.female')}}</option>
-            <option value="male">{{__('cruds.male')}}</option>
+            <option value="female">{{__('Female')}}</option>
+            <option value="male">{{__('Male')}}</option>
 
           </select>
         </div>
@@ -110,7 +110,7 @@
 
         <div class="form-group">
             <div class="d-grid gap-2">
-              <button type="submit"  class="btn btn-primary">{{ trans('global.save') }}</button>
+              <button type="submit"  class="btn btn-primary">{{ __('Create') }}</button>
             </div>
 
         </div>
