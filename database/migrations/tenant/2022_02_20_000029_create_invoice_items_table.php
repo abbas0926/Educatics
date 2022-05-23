@@ -14,6 +14,9 @@ class CreateInvoiceItemsTable extends Migration
             $table->decimal('price', 15, 2)->nullable();
             $table->timestamps();
             $table->softDeletes();
+            
+            //Custom inputs
+            $table->string('designation')->nullable();
         });
     }
 }

@@ -13,6 +13,8 @@ class CreateStudentsTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->nullable();
+            $table->string('gender')->default('female'); // Because women are always right
+            $table->string('phone')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('adresse')->nullable();
             $table->string('study_level')->nullable();

@@ -11,15 +11,15 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label for="attachements">{{ trans('cruds.student.fields.attachements') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('attachements') ? 'is-invalid' : '' }}" id="attachements-dropzone">
+                <label for="photo">{{ trans('cruds.student.fields.photo') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
                 </div>
-                @if($errors->has('attachements'))
+                @if($errors->has('photo'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('attachements') }}
+                        {{ $errors->first('photo') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.student.fields.attachements_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.student.fields.photo_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="first_name">{{ trans('cruds.student.fields.first_name') }}</label>
@@ -91,17 +91,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.student.fields.establishement_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label for="photo">{{ trans('cruds.student.fields.photo') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
-                </div>
-                @if($errors->has('photo'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('photo') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.student.fields.photo_helper') }}</span>
-            </div>
+
             <div class="form-group">
                 <label for="matricule">{{ trans('cruds.student.fields.matricule') }}</label>
                 <input class="form-control {{ $errors->has('matricule') ? 'is-invalid' : '' }}" type="text" name="matricule" id="matricule" value="{{ old('matricule', $student->matricule) }}">
@@ -111,6 +101,17 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.student.fields.matricule_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="attachements">{{ trans('cruds.student.fields.attachements') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('attachements') ? 'is-invalid' : '' }}" id="attachements-dropzone">
+                </div>
+                @if($errors->has('attachements'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('attachements') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.student.fields.attachements_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

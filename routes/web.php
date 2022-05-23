@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Onboarding\TenantRegistrationController;
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
@@ -7,6 +8,11 @@ Route::get('/home', function () {
     }
 
     return redirect()->route('admin.home');
+});
+Route::group(['prefix' => '' ,'as'=>'onboarding.'  ] ,function(){ 
+    Route::get('/check-domain/{domain}',[TenantRegistrationController::class,'checkDomain'])->name('checkDomain');
+    Route::get('/register-account',[TenantRegistrationController::class,'showForm'])->name('showForm');
+    Route::post('/register-account',[TenantRegistrationController::class,'processForm'])->name('processForm');
 });
 
 Auth::routes(['register' => false]);
