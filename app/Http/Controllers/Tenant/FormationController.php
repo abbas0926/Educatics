@@ -63,7 +63,7 @@ class FormationController extends Controller
         //     return $table->make(true);
         // }
         $formations =Formation::filter();
-
+        
         return view('tenant.formations.index', compact('formations'));
     }
 

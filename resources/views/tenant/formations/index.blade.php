@@ -69,11 +69,14 @@
               $(".alert").alert();
             </script>
         @endif
+       
+       
         @foreach ($formations as $formation)
+        @if($formation!=null)
             <div class="col-sm-12  col-md-4">
-
+        
                 <div class="card">
-                    <a href="{{ route('tenant.formations.show', ['formation' => $formation]) }}">
+                    <a href="{{ route('tenant.formations.show', ['formation' => 1]) }}">
                         <img src="{{ $formation->featured_image_url }}" class="card-img-top"
                             alt="{{ $formation->title }}" style="width: 100%;
                             aspect-ratio: 16 / 9;
@@ -83,7 +86,7 @@
                     <div class="card-body">
                         <div class="card-title">
                             <a class="text-decoration-none"
-                                href="{{ route('tenant.formations.show', ['formation' => $formation]) }}">
+                                href="{{ route('tenant.formations.show', ['formation' => 1]) }}">
                                 {{ $formation->title }}
                             </a>
                         </div>
@@ -98,16 +101,18 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex gap-1">
-                            <a href="{{ route('tenant.formations.destroy', ['formation' => $formation]) }}"
+                            <a href="{{ route('tenant.formations.destroy', ['formation' => 1]) }}"
                                 class="btn btn-clean btn-sm"> <i class="fa fa-trash"></i> </a>
-                            <a href="{{ route('tenant.formations.edit', ['formation' => $formation]) }}"
+                            <a href="{{ route('tenant.formations.edit', ['formation' => 1]) }}"
                                 class="btn btn-sm btn-clean"> <i class="fa fa-edit"></i> </a>
                         </div>
                     </div>
                 </div>
 
             </div>
+        @endif
         @endforeach
+        
     </div>
 @endsection
 @section('canvas')

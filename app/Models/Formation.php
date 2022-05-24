@@ -10,6 +10,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use App\Traits\Sluggify;
+use Doctrine\DBAL\Query;
 use Spatie\QueryBuilder\QueryBuilder;
 class Formation extends Model implements HasMedia
 {
@@ -101,6 +102,7 @@ class Formation extends Model implements HasMedia
         return $file;
     }
     public function getFrequencyTitleAttribute() { 
+        return "-";
         return Formation::PAYMENT_TYPE[$this->payment_frequency];
     }
     public function getPriceFormattedAttribute(){
