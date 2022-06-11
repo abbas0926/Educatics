@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Onboarding;
 
-use App\Cpanel\CPANEL;
+// use App\Cpanel\CPANEL;
+use Cpanel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Onboarding\RegisterTenantRequest;
 use Illuminate\Http\Request;
@@ -18,12 +19,8 @@ class TenantRegistrationController extends Controller
     //
 
     public function showForm(Request $request){
-       
-        $cpanel = new CPANEL("amarneche","Majorant132!","173.249.55.124:2083");
-        dd($cpanel);
-        $subdomain = Domain::all()->first();
-        redirect(tenant_route($subdomain,'tenant.home'));
-        return redirect()->route('tenant.home')->domain($subdomain);
+
+      
         return view('onboarding.register-account');
     }
     public function processForm(RegisterTenantRequest $request){ 

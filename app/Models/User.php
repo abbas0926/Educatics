@@ -97,6 +97,8 @@ class User extends Authenticatable
 
         return $file;
     }
-
+    public function  media(){
+        
+    }
 
 }

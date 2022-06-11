@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Tenant\EventController;
+use App\Http\Controllers\Tenant\LessonController;
+use App\Http\Controllers\Tenant\StudentController;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
@@ -76,6 +79,7 @@ Route::group([ 'middleware' => ['web' ,
     Route::resource('task-tags', 'TaskTagController');
 
     // Task
+    Route::post('tasks/storeFromCalendar','TaskController@storeFromCalendar')->name('tasks.storeFromCalendar');
     Route::delete('tasks/destroy', 'TaskController@massDestroy')->name('tasks.massDestroy');
     Route::post('tasks/media', 'TaskController@storeMedia')->name('tasks.storeMedia');
     Route::post('tasks/ckmedia', 'TaskController@storeCKEditorImages')->name('tasks.storeCKEditorImages');
@@ -131,6 +135,12 @@ Route::group([ 'middleware' => ['web' ,
     Route::resource('groups', 'GroupController');
 
     // Student
+    Route::post('students.changePromotion',[StudentController::class,'changePromotion'])->name('students.changePromotion');
+    Route::post('students.attachPromotion',[StudentController::class,'attachToPromotion'])->name('students.attachPromotion');
+    Route::post('students.changeFormation',[StudentController::class,'changeFormation'])->name('students.changeFormation');
+    Route::post('students.attachFormation',[StudentController::class,'attachToFormation'])->name('students.attachFormation');
+    Route::post('students.changeGroup',[StudentController::class,'changeGroup'])->name('students.changeGroup');
+    Route::post('students.attach',[StudentController::class,'attachToGroup'])->name('students.attach');
     Route::delete('students/destroy', 'StudentController@massDestroy')->name('students.massDestroy');
     Route::post('students/media', 'StudentController@storeMedia')->name('students.storeMedia');
     Route::post('students/ckmedia', 'StudentController@storeCKEditorImages')->name('students.storeCKEditorImages');
@@ -153,6 +163,7 @@ Route::group([ 'middleware' => ['web' ,
     Route::resource('site-settings', 'SiteSettingController');
 
     // Lesson
+    Route::post('lessons/storeFromCalendar',[LessonController::class,'storeFromCalendar'])->name('lessons.storeFromCalendar');
     Route::delete('lessons/destroy', 'LessonController@massDestroy')->name('lessons.massDestroy');
     Route::post('lessons/media', 'LessonController@storeMedia')->name('lessons.storeMedia');
     Route::post('lessons/ckmedia', 'LessonController@storeCKEditorImages')->name('lessons.storeCKEditorImages');
@@ -170,6 +181,7 @@ Route::group([ 'middleware' => ['web' ,
     Route::resource('employees', 'EmployeeController');
 
     // Event
+    Route::post('events/storeFromCalendar',[EventController::class,'storeFromCalendar'])->name('events.storeFromCalendar');
     Route::delete('events/destroy', 'EventController@massDestroy')->name('events.massDestroy');
     Route::post('events/media', 'EventController@storeMedia')->name('events.storeMedia');
     Route::post('events/ckmedia', 'EventController@storeCKEditorImages')->name('events.storeCKEditorImages');

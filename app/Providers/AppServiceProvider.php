@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\PromotionStudent;
+
+use App\Observers\Tenant\PromotionStudentObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        PromotionStudent::observe(PromotionStudentObserver::class);
     }
 }

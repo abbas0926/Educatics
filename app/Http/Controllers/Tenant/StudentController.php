@@ -7,6 +7,11 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\Tenant\MassDestroyStudentRequest;
 use App\Http\Requests\Tenant\StoreStudentRequest;
 use App\Http\Requests\Tenant\UpdateStudentRequest;
+use App\Models\Formation;
+use App\Models\Group;
+use App\Models\GroupStudent;
+use App\Models\Promotion;
+use App\Models\PromotionStudent;
 use App\Models\Student;
 use Gate;
 use Illuminate\Http\Request;
@@ -73,10 +78,11 @@ class StudentController extends Controller
             return $table->make(true);
         }
         $students =Student::filter();
+       $formations= Formation::all();
+       $promotions =Promotion::all();
 
 
-
-        return view('tenant.students.index' , compact('students'));
+        return view('tenant.students.index' , compact('students','formations','promotions'));
     }
 
     public function create()
@@ -101,7 +107,13 @@ class StudentController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $student->id]);
         }
-
+        // // dd();
+        // $student->setRawAttributes([$request->input('promotion_id', [])], true);
+        $promotionStudent=new PromotionStudent();
+        $promotionStudent->student_id = $student->id;
+        $promotionStudent->promotion_id=$request->input('promotion_id', []);
+        $promotionStudent->save();
+        // $student->studentPromotions()->sync($request->input('promotion_id', []));
         return redirect()->route('tenant.students.index');
     }
 
@@ -149,8 +161,10 @@ class StudentController extends Controller
         abort_if(Gate::denies('student_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $student->load('studentInvoices', 'studentGroups', 'studentPromotions', 'presenceStudentLessons');
+        $promotions= Promotion::all();
+        $formations=Formation::all();
 
-        return view('tenant.students.show', compact('student'));
+        return view('tenant.students.show', compact('student','formations','promotions'));
     }
 
     public function destroy(Student $student)
@@ -180,4 +194,66 @@ class StudentController extends Controller
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
+    
+    public function attachToGroup( Request $request){
+        abort_if(Gate::denies('student_create') && Gate::denies('student_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+     
+        $group_student= new GroupStudent();
+        $group_student->student_id=$request->student_id;
+        $group_student->group_id=$request->group_id;
+        $group_student->save();
+
+        return redirect()->back();
+    }
+    public function changeGroup( Request $request){
+        abort_if(Gate::denies('student_create') && Gate::denies('student_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+     
+        $group_student=  PromotionStudent::where('student_id',$request->student_id)->get()->first();
+        $group_student->group_id=$request->group_id;
+        $group_student->save();
+
+        return redirect()->back();
+    }
+
+    public function changePromotion( Request $request){
+        abort_if(Gate::denies('student_create') && Gate::denies('student_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+     
+        $group_student=  PromotionStudent::where('student_id',$request->student_id)->get()->first();
+        $group_student->promotion_id=$request->promotion_id;
+        $group_student->save();
+
+        return redirect()->back();
+    }
+
+    public function attachToPromotion( Request $request){
+        abort_if(Gate::denies('student_create') && Gate::denies('student_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+     
+        $group_student= new GroupStudent();
+        $group_student->student_id=$request->student_id;
+        $group_student->promotion_id=$request->promotion_id;
+        $group_student->save();
+
+        return redirect()->back();
+    }
+    public function changeFormation( Request $request){
+        abort_if(Gate::denies('student_create') && Gate::denies('student_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+     
+        $group_student=  GroupStudent::where('student_id',$request->student_id)->get()->first();
+        $group_student->formation_id=$request->formation_id;
+        $group_student->save();
+
+        return redirect()->back();
+    }
+
+    public function attachToFormation( Request $request){
+        abort_if(Gate::denies('student_create') && Gate::denies('student_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+     
+        $group_student= new GroupStudent();
+        $group_student->student_id=$request->student_id;
+        $group_student->formation_id=$request->formation_id;
+        $group_student->save();
+
+        return redirect()->back();
+    }
+    
 }

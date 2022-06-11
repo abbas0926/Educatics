@@ -107,6 +107,25 @@ class EventController extends Controller
         return redirect()->route('tenant.events.index');
     }
 
+    public function storeFromCalendar(StoreEventRequest $request)
+    {
+        $event = Event::create($request->all());
+
+        if ($request->input('featured_image', false)) {
+            $event->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
+        }
+
+        foreach ($request->input('gallery', []) as $file) {
+            $event->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('gallery');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $event->id]);
+        }
+
+        return redirect()->back();
+    }
+
     public function edit(Event $event)
     {
         abort_if(Gate::denies('event_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

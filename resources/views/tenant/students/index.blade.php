@@ -88,7 +88,7 @@
 @endsection
 
 @section('canvas')
-    @include('tenant.students.offcanvas.create')
+    @include('tenant.students.offcanvas.create',['promotions'=>$promotions,'formations'=>$formations])
 @endsection
 @section('scripts')
     @parent

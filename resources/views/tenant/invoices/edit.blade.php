@@ -35,6 +35,16 @@
                 <span class="help-block">{{ trans('cruds.invoice.fields.student_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="status">Status</label>
+                <input class="form-control date {{ $errors->has('status') ? 'is-invalid' : '' }}" type="text" name="status" id="status" value="{{ old('status', $invoice->status) }}">
+                @if($errors->has('status'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('status') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.invoice.fields.status_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="deadline">{{ trans('cruds.invoice.fields.deadline') }}</label>
                 <input class="form-control date {{ $errors->has('deadline') ? 'is-invalid' : '' }}" type="text" name="deadline" id="deadline" value="{{ old('deadline', $invoice->deadline) }}">
                 @if($errors->has('deadline'))

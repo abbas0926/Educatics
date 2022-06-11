@@ -23,12 +23,26 @@
                             <tr>
                                 <td> {{ __('cruds.gender') }} </td>  <td><strong>{{ $student->gender }}</strong></td>
                             </tr>
-
+                            <tr>
+                                <td>   {{ trans('cruds.formation.title') }} </td>  <td>@if( $student->studentPromotions->first()->formation!=null)<strong>{{ $student->studentPromotions->first()->formation->title}}  </strong>
+                                    <a class="success" data-toggle="modal" data-target="#EditFormationModal"><i class="fas fa-edit"></i></a>@else
+                                    <a class="success"data-toggle="modal" data-target="#AddFormationModal"><i class="fas fa-plus"></i></a>@endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>  {{ trans('cruds.promotion.title') }} </td>  <td>@if($student->studentPromotions->first()!=null)<strong>{{ $student->studentPromotions->first()->name}}  </strong>
+                                    <a class="success" data-toggle="modal" data-target="#EditPromotionModal"><i class="fas fa-edit"></i></a>@else
+                                    <a class="success"data-toggle="modal" data-target="#AddPromotionModal"><i class="fas fa-plus"></i></a>@endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>  {{ trans('cruds.group.title') }} </td>  <td>@if($student->studentGroups->first()!=null)<strong>{{ $student->studentGroups->first()->name}}  </strong>
+                                    <a class="success" data-toggle="modal" data-target="#EditGroupModal"><i class="fas fa-edit"></i></a>@else
+                                    <a class="success"data-toggle="modal" data-target="#AddGroupModal"><i class="fas fa-plus"></i></a>@endif
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-
-
-
                 </div>
             </div>
         </div>
@@ -38,23 +52,45 @@
                     {{ trans('cruds.invoice.title') }}
                 </div>
                 <div class="card-body">
-
-                </div>
-            </div>
-            <div class="card mb-2">
-                <div class="card-header">
-                    {{ trans('cruds.group.title') }}
-                </div>
-                <div class="card-body">
-
-                </div>
-            </div>
-            <div class="card mb-2">
-                <div class="card-header">
-                    {{ trans('cruds.promotion.title') }}
-                </div>
-                <div class="card-body">
-
+                    <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Invoice">
+                        <thead>
+                            <tr>
+                               
+                                <th>
+                                    {{ trans('cruds.invoice.fields.id') }}
+                                </th>
+                               <th>
+                                   Sous total
+                               </th>
+                                <th>
+                                    {{ trans('cruds.invoice.fields.total') }}
+                                </th>
+                                
+                                <th>
+                                    {{ trans('cruds.invoice.fields.deadline') }}
+                                </th>
+                                <th>
+                                   Date création
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($student->studentInvoices as $invoice )
+                            <td>{{$invoice->id}}</td>
+                            <td>{{$invoice->total}}</td>
+                            <td>{{$invoice->total_to_pay}}</td>
+                            <td>{{$invoice->deadline}}</td>
+                            <td>{{$invoice->created_at}}</td>
+                            <td>@if($invoice->status ==0)<label class="label label-success"> Unpaid</label> @else Paid @endif</td>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="card mb-2">
@@ -70,4 +106,7 @@
     </div>
 
 
+@endsection
+@section('modals')
+@include('tenant.students.includes.modals',['student'=>$student,'formations'=>$formations,'promotions'=>$promotions]);
 @endsection

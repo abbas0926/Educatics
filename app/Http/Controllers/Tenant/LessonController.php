@@ -116,6 +116,27 @@ class LessonController extends Controller
         return redirect()->route('tenant.lessons.index');
     }
 
+    public function storeFromCalendar(StoreLessonRequest $request)
+    {
+        $lesson = Lesson::create($request->all());
+        $lesson->date_only=Carbon::parse( $request->start_at)->format('Y-m-d');
+        $lesson->save();
+        $lesson->presence_students()->sync($request->input('presence_students', []));
+        foreach ($request->input('support', []) as $file) {
+            $lesson->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('support');
+        }
+
+        foreach ($request->input('homework', []) as $file) {
+            $lesson->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('homework');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $lesson->id]);
+        }
+
+        return redirect()->back();
+    }
+
     public function edit(Lesson $lesson)
     {
         abort_if(Gate::denies('lesson_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

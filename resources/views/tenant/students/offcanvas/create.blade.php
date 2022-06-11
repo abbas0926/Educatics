@@ -107,7 +107,35 @@
             @endif
             <span class="help-block">{{ trans('cruds.student.fields.matricule_helper') }}</span>
         </div>
-
+        {{-- <div class="form-group">
+            <label class="required" for="formation_id">{{ trans('cruds.promotion.fields.formation') }}</label>
+            <select class="form-control select2 {{ $errors->has('formation') ? 'is-invalid' : '' }}" name="formation_id" id="formation_id" required>
+                @foreach($formations as $formation)
+                    <option value="{{ $formation->id }}" {{ old('formation_id') == $formation->id ? 'selected' : '' }}>{{ $formation->title }}</option>
+                @endforeach
+            </select>
+            @if($errors->has('formation'))
+                <div class="invalid-feedback">
+                    {{ $errors->first('formation') }}
+                </div>
+            @endif
+            <span class="help-block">{{ trans('cruds.promotion.fields.formation_helper') }}</span>
+        </div> --}}
+        <div class="form-group">
+            <label class="required" for="promotion_id">{{ trans('cruds.group.fields.promotion') }}</label>
+            <select class="form-control select2 {{ $errors->has('promotion') ? 'is-invalid' : '' }}" name="promotion_id" id="promotion_id" required>
+                @foreach($promotions as $promotion)
+                    <option value="{{ $promotion->id }}" {{ old('promotion_id') == $promotion->id ? 'selected' : '' }}>{{ $promotion->name }}</option>
+                @endforeach
+            </select>
+            @if($errors->has('promotion'))
+                <div class="invalid-feedback">
+                    {{ $errors->first('promotion') }}
+                </div>
+            @endif
+            <span class="help-block">{{ trans('cruds.group.fields.promotion_helper') }}</span>
+        </div>
+       
         <div class="form-group">
             <div class="d-grid gap-2">
               <button type="submit"  class="btn btn-primary">{{ __('Create') }}</button>

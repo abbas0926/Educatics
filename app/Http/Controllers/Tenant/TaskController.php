@@ -57,6 +57,26 @@ class TaskController extends Controller
         return redirect()->route('tenant.tasks.index');
     }
 
+
+    public function storeFromCalendar(StoreTaskRequest $request)
+    {
+        $task = Task::create($request->all());
+        $task->tags()->sync($request->input('tags', []));
+        if ($request->input('attachment', false)) {
+            $task->addMedia(storage_path('tmp/uploads/' . basename($request->input('attachment'))))->toMediaCollection('attachment');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $task->id]);
+        }
+
+        $events = Task::whereNotNull('due_date')->get();
+        $statuses = TaskStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $tags = TaskTag::pluck('name', 'id');
+        $assigned_tos = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        return view('tenant.tasksCalendars.index', compact('events','statuses','tags','assigned_tos'));
+    }
+    
     public function edit(Task $task)
     {
         abort_if(Gate::denies('task_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

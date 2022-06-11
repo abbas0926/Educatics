@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classroom;
+use App\Models\Group;
+use App\Models\Teacher;
 use Carbon\Carbon;
 
 class SystemCalendarController extends Controller
@@ -36,7 +39,10 @@ class SystemCalendarController extends Controller
                 ];
             }
         }
-
-        return view('tenant.calendar.calendar', compact('events'));
+       $classrooms=Classroom::all();
+       $groups=Group::all();
+       $teachers= Teacher::all();
+       
+        return view('tenant.calendar.calendar', compact('events','classrooms','groups','teachers'));
     }
 }
